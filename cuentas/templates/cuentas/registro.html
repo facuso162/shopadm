@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block 'titulo' %}ShopAdm | Registro{% endblock %}
+
+{% block 'body' %}
+    <h1>REGISTRO</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Registrarse">
+    </form>
+
+    <p>Si ya tiene una cuenta haga clic <a href="{% url 'login' %}">aqui.</a></p>
+
+{% endblock %}

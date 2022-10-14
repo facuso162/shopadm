@@ -1,0 +1,22 @@
+<div>
+
+    <a href="{% url 'agregarProducto' %}">Crear Producto</a>
+
+    {% if cantidad != 0 %}
+        <ul>
+            {% for p in productos %}
+                <li>
+                    {{p.imagen}}
+                    {{p.nombre}}
+                    {{p.stock}}
+                    {{p.precio}}
+                    <a href="#">Editar</a>
+                    <a href="#">Eliminar</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>No hay ningun producto</h3>
+    {% endif %}
+    
+</div>

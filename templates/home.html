@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block 'titulo' %}ShopAdm | {{request.user}}{% endblock %}
+
+{% block 'body' %}
+
+    <div>
+        <!--NAVBAR-->
+        <h3>Logo</h3>
+        <ul>
+            <li><a href="{% url 'productos' %}">Productos</a></li>
+            <li><a href="#">Ventas</a></li>
+        </ul>
+        <a href="#">{{request.user}}</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+    <div> 
+        <!--MAIN-->
+        {% if opcion == 0 %}
+            <h3>Bienvenido, {{request.user}}</h3>
+        {% elif opcion == 1 %}
+            {% include 'productos/productosList.html' %}
+        {% elif opcion == 2 %}
+            {% include 'productos/agregarProducto.html' with form=form %}
+        {% endif %}
+    </div>
+
+{% endblock %}
