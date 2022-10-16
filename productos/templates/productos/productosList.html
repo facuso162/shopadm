@@ -10,8 +10,8 @@
                     {{p.nombre}}
                     {{p.stock}}
                     {{p.precio}}
-                    <a href="#">Editar</a>
-                    <a href="#">Eliminar</a>
+                    <a href="{% url 'editarProducto' pk=p.id %}">Editar</a>
+                    <a href="{% url 'eliminarProducto' pk=p.id %}">Eliminar</a>
                 </li>
             {% endfor %}
         </ul>

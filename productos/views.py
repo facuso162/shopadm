@@ -9,7 +9,7 @@ from .forms import ProductCreationForm
 @login_required(login_url='login')
 def productosListView(request):
 
-    productos = Producto.objects.all()
+    productos = Producto.objects.filter(usuario=request.user)
 
     cantidad = productos.count()
 
@@ -24,12 +24,14 @@ def productosListView(request):
 @login_required(login_url='login')
 def agregarProductoView(request):
 
-    form = ProductCreationForm(usuario=request.user)
+    form = ProductCreationForm()
 
     if request.method == 'POST':
-        form = ProductCreationForm(request.POST, usuario=request.user)
+        form = ProductCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            productoInstance = form.save(commit=False)
+            productoInstance.usuario = request.user
+            productoInstance.save()
             return redirect('productos')
 
     context = {
@@ -39,4 +41,27 @@ def agregarProductoView(request):
 
     return render(request, 'home.html', context)
 
+@login_required(login_url='login')
+def editarProductoView(request, pk):
+
+    p = Producto.objects.filter(id=pk)[0]
     
+    form = ProductCreationForm(instance=p)
+
+    if request.method == 'POST':
+        form = ProductCreationForm(request.POST, instance=p)
+        if form.is_valid():
+            form.save()
+            return redirect('productos')
+
+    context = {
+        'opcion':2,
+        'form':form,
+    }
+
+    return render(request, 'home.html', context)
+
+@login_required(login_url='login')
+def eliminarProductoView(request, pk):
+    pass
+    # realizar implementacion
