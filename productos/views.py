@@ -63,5 +63,16 @@ def editarProductoView(request, pk):
 
 @login_required(login_url='login')
 def eliminarProductoView(request, pk):
-    pass
-    # realizar implementacion
+
+    p = Producto.objects.filter(id=pk)[0]
+    
+    if request.method == 'POST':
+        p.delete()
+        return redirect('productos')
+
+    context = {
+        'opcion': 3,
+        'producto': p,
+    }
+
+    return render(request, 'home.html', context)

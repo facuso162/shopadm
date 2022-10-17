@@ -22,6 +22,8 @@
             {% include 'productos/productosList.html' %}
         {% elif opcion == 2 %}
             {% include 'productos/agregarProducto.html' with form=form %}
+        {% elif opcion == 3 %}
+            {% include 'productos/eliminarProducto.html' with nombreProducto=producto.nombre %}
         {% endif %}
     </div>
 
