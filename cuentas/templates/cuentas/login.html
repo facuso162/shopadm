@@ -3,21 +3,22 @@
 {% block 'titulo' %}ShopAdm | Login{% endblock %}
 
 {% block 'body' %}
-    <h1>LOGEO</h1>
+    <div class="d-flex justify-content-center" style="height: 100vh;">
+        <div class="mt-5 text-center bg-light" style="width: 300px; height: 320px;">
+            <h3>Bienvenido!</h3>
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        <p>
-            <label>Username:</label>
-            <input type="text" name="username">
-        </p>
-        <p>
-            <label>Password:</label>
-            <input type="password" name="password">
-        </p>
-        <input type="submit" value="Loguearse">
-    </form>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <p>
+                    <input type="text" name="username" id="userField" class="form-control" placeholder="Nombre de Usuario" required autofocus>
+                </p>
+                <p>
+                    <input type="password" name="password" id="passwordField" class="form-control" placeholder="Contraseña" required>
+                </p>
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Ingresar">
+            </form>
 
-    <p>Si no tiene una cuenta <a href="{% url 'registro' %}">registrese.</a></p>
-
+            <p class="mt-2">Si no tiene una cuenta <a href="{% url 'registro' %}">registrese.</a></p>
+        </div>
+    </div>
 {% endblock %}

@@ -3,14 +3,17 @@
 {% block 'titulo' %}ShopAdm | Registro{% endblock %}
 
 {% block 'body' %}
-    <h1>REGISTRO</h1>
+    <div class="d-flex justify-content-center" style="height: 100vh;">
+        <div class="mt-5 text-center bg-light" style="width: 300px; height: 320px;">
+            <h3>Registro</h3>
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Registrarse">
-    </form>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Registrarse">
+            </form>
 
-    <p>Si ya tiene una cuenta haga clic <a href="{% url 'login' %}">aqui.</a></p>
-
+            <p class="mt-2">Si ya tiene una cuenta haga clic <a href="{% url 'login' %}">aqui.</a></p>
+        </div>
+    </div>
 {% endblock %}
