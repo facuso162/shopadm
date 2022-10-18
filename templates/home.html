@@ -1,34 +1,44 @@
 {% extends 'base.html' %}
 
 {% block 'titulo' %}ShopAdm | {{request.user}}{% endblock %}
-
 {% block 'body' %}
-    <div class="">
-        <nav class="navbar navbar-expand-sm navbar-light bg-light ">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://kit.fontawesome.com/ca6b8ee055.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div>
+        <nav class="navbar navbar-expand-sm navbar-light ps-2 pe-2"  style="background-color:rgb(26, 67, 190);">
             <a href="#" class="navbar-brand mb-0 h1">
-                <!-- <img class="d-inline-block align-top" src="#" alt="AppLogo" width="30" height="30"> -->
-                Logo
+                <i class="fa-brands fa-aws fa-5x" ></i>
+    
             </a>
             <button type="button" data-toggle="collapse" data-target="navbarNav" class="navbar-toggler"></button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" style="margin-left: 50px;"id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a href="{% url 'productos' %}" class="nav-link">
+                    <li class="nav-item active" >
+                        <a href="{% url 'productos' %}" class="nav-link" style="color:rgb(255, 255, 255);font-size: 25px;">
                             Productos
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link"style="color:rgb(255, 255, 255);font-size: 25px;">
                             Ventas
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a href="#" class="nav-link">
-                            {{request.user}}
+                        <a href="#" class="nav-link"style="color:rgb(255, 255, 255);font-size: 25px;">
+                            <i class="fa-solid fa-user"></i> {{request.user}}
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a href="{% url 'logout' %}" class="nav-link">
+                        <a href="{% url 'logout' %}" class="nav-link"style="color:rgb(255, 255, 255);font-size: 25px;">
                             Logout
                         </a>
                     </li>
@@ -38,7 +48,7 @@
         <div> 
             <!--MAIN-->
             {% if opcion == 0 %}
-                <h3>Bienvenido, {{request.user}}</h3>
+                <h3  style="color:rgb(26, 67, 190); text-align: center;">Bienvenido, {{request.user}}</h3>
             {% elif opcion == 1 %}
                 {% include 'productos/productosList.html' %}
             {% elif opcion == 2 %}
@@ -48,4 +58,10 @@
             {% endif %}
         </div>
     </div>
+
+
+    
 {% endblock %}
+
+</body>
+</html>
